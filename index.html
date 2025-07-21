@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohit Yadav | Data Analyst & Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        /* ===== EDITABLE VARIABLES ===== */
+        :root {
+            --primary: #00ff88;              /* Main accent color */
+            --primary-dark: #00cc6a;         /* Darker accent for hover states */
+            --dark: #121212;                 /* Dark background */
+            --darker: #0d0d0d;               /* Even darker for cards */
+            --light: #f0f0f0;                /* Light text */
+            --gray: #aaaaaa;                 /* Secondary text */
+            --font-main: 'Poppins', sans-serif;
+            --font-secondary: 'Montserrat', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* ===== 3D BACKGROUND EFFECTS ===== */
+        #threejs-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+        
+        /* Floating shapes background */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .floating-shapes div {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 255, 136, 0.05);
+            filter: blur(30px);
+            animation: float-shapes 25s linear infinite;
+        }
+        
+        .floating-shapes div:nth-child(1) {
+            width: 500px;
+            height: 500px;
+            top: 10%;
+            left: 10%;
+        }
+        
+        .floating-shapes div:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            top: 60%;
+            left: 70%;
+            animation-delay: 5s;
+            animation-duration: 30s;
+        }
+        
+        .floating-shapes div:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            top: 30%;
+            left: 50%;
+            animation-delay: 10s;
+            animation-duration: 20s;
+        }
+        
+        @keyframes float-shapes {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(50px, 100px) rotate(90deg);
+            }
+            50% {
+                transform: translate(100px, 0) rotate(180deg);
+            }
+            75% {
+                transform: translate(50px, -100px) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+        
+        /* Grid overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* ===== MAIN LAYOUT ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        section {
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            font-family: var(--font-secondary);
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            border-radius: 3px;
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: var(--font-secondary);
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            padding: 5rem 0;
+            min-height: 90vh;
+        }
+        
+        .hero-content {
+            flex: 1;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), #00aaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            font-family: var(--font-secondary);
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--gray);
+        }
+        
+        .hero p {
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+        
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+        }
+        
+        /* ===== SOCIAL LINKS ===== */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light);
+            transition: all 0.3s;
+            font-size: 1.3rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        /* ===== ABOUT SECTION ===== */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== SKILLS SECTION ===== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .skill {
+            background-color: var(--darker);
+            padding: 2.5rem;
+            border-radius: 15px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .skill:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 20px 30px rgba(0, 255, 136, 0.1);
+        }
+        
+        .skill h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-family: var(--font-secondary);
+        }
+        
+        .skill-bar {
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #00aaff);
+            border-radius: 6px;
+            position: relative;
+            transition: width 1s ease-in-out;
+        }
+        
+        .skill-progress::after {
+            content: attr(data-progress);
+            position: absolute;
+            right: 10px;
+            top: -30px;
+            font-size: 0.9rem;
+            color: var(--light);
+            font-weight: 600;
+        }
+        
+        .skill p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+        
+        /* ===== PROJECTS SECTION ===== */
+        .projects-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 450px;
+            padding: 3rem 0;
+        }
+        
+        .project-slide {
+            background: linear-gradient(145deg, var(--darker), #0a0a0a);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-slide::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(0, 255, 136, 0.1),
+                rgba(0, 255, 136, 0)
+            );
+            transform: rotate(30deg);
+            z-index: 0;
+        }
+        
+        .project-slide:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 255, 136, 0.3);
+            border-color: rgba(0, 255, 136, 0.3);
+        }
+        
+        .project-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .project-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-family: var(--font-secondary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .project-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .project-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            flex: 1;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-tag {
+            background-color: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .project-tag:hover {
+            background-color: rgba(0, 255, 136, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+            padding: 0.7rem 1.2rem;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-links a:hover {
+            color: var(--primary);
+            background: rgba(0, 255, 136, 0.1);
+            border-color: rgba(0, 255, 136, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .swiper-pagination-bullet {
+            background-color: var(--gray);
+            opacity: 0.5;
+            width: 12px;
+            height: 12px;
+            transition: all 0.3s;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background-color: var(--primary);
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--primary);
+            background-color: rgba(0, 255, 136, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background-color: rgba(0, 255, 136, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        /* ===== CONTACT SECTION ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(0, 255, 136, 0.3);
+        }
+        
+        .contact-item i {
+            width: 60px;
+            height: 60px;
+            background-color: var(--darker);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        .contact-item-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-family: var(--font-secondary);
+        }
+        
+        .contact-item-content a, 
+        .contact-item-content p {
+            color: var(--light);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .contact-item-content a:hover {
+            color: var(--primary);
+        }
+        
+        .contact-form {
+            background-color: var(--darker);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+            border-color: rgba(0, 255, 136, 0.3);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* ===== CHATBOT STYLES ===== */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            color: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .chatbot-toggle:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .chatbot-window {
+            width: 350px;
+            height: 500px;
+            background-color: var(--darker);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform-origin: bottom right;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .chatbot-header {
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 1rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-close {
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        
+        .chatbot-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .message {
+            max-width: 80%;
+            padding: 1rem 1.2rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            position: relative;
+            transition: all 0.3s;
+            transform-origin: left;
+            animation: messageIn 0.3s ease-out;
+        }
+        
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .bot-message {
+            background-color: rgba(255, 255, 255, 0.1);
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .user-message {
+            background-color: var(--primary);
+            color: var(--dark);
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            color: var(--light);
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .chatbot-input input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+        }
+        
+        .chatbot-input button {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chatbot-input button:hover {
+            background-color: var(--primary-dark);
+            transform: rotate(15deg);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            font-family: var(--font-secondary);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+        }
+        
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-social a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+        
+        .footer-social a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* ===== CARD STYLES ===== */
+        .card {
+            background-color: var(--darker);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2);
+            border-color: rgba(0, 255, 136, 0.3);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 2rem;
+            }
+            
+            .hero {
+                gap: 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 3rem 0;
+            }
+            
+            .hero p {
+                max-width: 100%;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .btn-group {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .chatbot-window {
+                width: 300px;
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                gap: 1.5rem;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .swiper {
+                height: auto;
+                padding: 2rem 0;
+            }
+            
+            .chatbot-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .chatbot-window {
+                width: 280px;
+                right: -50px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 2rem;
+            }
+            
+            .chatbot-window {
+                width: 260px;
+                right: -80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 3D Background Elements -->
+    <div id="threejs-bg"></div>
+    <div class="floating-shapes">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+    <div class="container">
+        <!-- ===== HEADER ===== -->
+        <header>
+            <div class="logo">Rohit Yadav</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Rohit Yadav</h1>
+                <h2>Data Analyst & Software Engineer</h2>
+                <p>Passionate about transforming data into actionable insights and building robust software solutions. With expertise in data analysis, machine learning, and full-stack development, I bridge the gap between data and technology.</p>
+                
+                <div class="btn-group">
+                    <a href="#contact" class="btn">
+                        <i class="fas fa-paper-plane"></i> Get In Touch
+                    </a>
+                    <a href="#projects" class="btn btn-outline">
+                        <i class="fas fa-code"></i> View Projects
+                    </a>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/rohit-yadav-986402362/" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/krissi0619" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:rohityadav00619@gmail.com" title="Email">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                    <a href="resume.pdf" class="btn" title="Download Resume" style="margin-left: 1rem;">
+                        <i class="fas fa-download"></i> Resume
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== ABOUT SECTION ===== -->
+        <section id="about" class="card">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate Data Analyst and Software Engineer with experience in turning complex data into meaningful insights and developing scalable software solutions. My journey in technology began with a curiosity about how data can tell stories and how software can solve real-world problems.</p>
+                    <p>With a strong foundation in Python, SQL, and data visualization tools, I specialize in extracting valuable information from raw data. As a software engineer, I enjoy building efficient, user-friendly applications using modern technologies.</p>
+                    <p>When I'm not coding or analyzing data, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem; font-family: var(--font-secondary);">Education & Experience</h3>
+                        <ul style="list-style-type: none;">
+                            <li style="margin-bottom: 0.8rem;">
+                                <strong>Bachelor's in Information Technology</strong> -  Panjab University Swami Sarvanand Giri Regional Centre (2022-2026)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== SKILLS SECTION ===== -->
+        <section id="skills">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                <div class="skill card">
+                    <h3>Data Analysis</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="95%" style="width: 95%;"></div>
+                    </div>
+                    <p>Python (Pandas, NumPy), SQL, Excel, Power BI, Tableau, Data Visualization</p>
+                </div>
+                
+                <div class="skill card">
+                    <h3>Machine Learning</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="85%" style="width: 85%;"></div>
+                    </div>
+                    <p>Scikit-learn, TensorFlow, Predictive Modeling, Natural Language Processing</p>
+                </div>
+                
+                <div class="skill card">
+                    <h3>Software Development</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="90%" style="width: 90%;"></div>
+                    </div>
+                    <p>Tailwind, Python, JavaScript, React, Node.js, Django, REST APIs, Git</p>
+                </div>
+                
+                <div class="skill card">
+                    <h3>Database Management</h3>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-progress="88%" style="width: 88%;"></div>
+                    </div>
+                    <p>SQL, PostgreSQL, MongoDB</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== PROJECTS SECTION ===== -->
+        <section id="projects">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-container">
+                <!-- Slider main container -->
+                <div class="swiper">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        <!-- Slides -->
+                        <div class="swiper-slide">
+                            <div class="project-slide card">
+                                <div class="project-content">
+                                    <h3>Netflix Movie Data Analysis</h3>
+                                    <p>Comprehensive analysis of Netflix movie dataset including trends, ratings, and content analysis using Python and data visualization tools. This project demonstrates advanced data cleaning techniques and insightful visualizations.</p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">Python</span>
+                                        <span class="project-tag">Pandas</span>
+                                        <span class="project-tag">Matplotlib</span>
+                                        <span class="project-tag">Seaborn</span>
+                                        <span class="project-tag">Data Visualization</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="https://github.com/krissi0619/NetflixMoviesDataAnalysis" target="_blank">
+                                            <i class="fab fa-github"></i> View on GitHub
+                                        </a>
+                                        <a href="#" class="demo-link">
+                                            <i class="fas fa-external-link-alt"></i> Live Demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <div class="project-slide card">
+                                <div class="project-content">
+                                    <h3>Pizza Sales Data Analysis</h3>
+                                    <p>Detailed sales analysis project examining pizza sales data to identify trends, popular items, and sales performance metrics. The project includes SQL queries, Power BI dashboards, and actionable business insights.</p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">SQL</span>
+                                        <span class="project-tag">Power BI</span>
+                                        <span class="project-tag">Data Visualization</span>
+                                        <span class="project-tag">Business Insights</span>
+                                        <span class="project-tag">Data Modeling</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="https://github.com/krissi0619/Pizzas_sales_SQL_Project" target="_blank">
+                                            <i class="fab fa-github"></i> View on GitHub
+                                        </a>
+                                        <a href="#" class="demo-link">
+                                            <i class="fas fa-external-link-alt"></i> Live Demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                    
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== CONTACT SECTION ===== -->
+        <section id="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin-in"></i>
+                        <div class="contact-item-content">
+                            <h3>LinkedIn</h3>
+                            <a href="https://www.linkedin.com/in/rohit-yadav-986402362/" target="_blank">linkedin.com/in/rohit-yadav-986402362/</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div class="contact-item-content">
+                            <h3>GitHub</h3>
+                            <a href="https://github.com/krissi0619" target="_blank">github.com/krissi0619</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-item-content">
+                            <h3>Email</h3>
+                            <a href="mailto:rohityadav00619@gmail.com">rohityadav00619@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="contact-item-content">
+                            <h3>Phone</h3>
+                            <a href="tel:+918427525593">+91 8427525593</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-file-download"></i>
+                        <div class="contact-item-content">
+                            <h3>Resume</h3>
+                            <a href="resume.pdf" class="btn">
+                                <i class="fas fa-download"></i> Download My Resume
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form card">
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-family: var(--font-secondary);">Send Me a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <div class="footer-logo">Rohit Yadav</div>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.linkedin.com/in/rohit-yadav-986402362/" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/krissi0619" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:rohityadav00619@gmail.com">
+                    <i class="far fa-envelope"></i>
+                </a>
+            </div>
+            <div class="copyright">
+                &copy; <span id="year"></span> Rohit Yadav. All rights reserved.
+            </div>
+        </footer>
+    </div>
+    
+    <!-- ===== CHATBOT ===== -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <span>Rohit's Assistant</span>
+                <span class="chatbot-close" id="chatbotClose">&times;</span>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    Hi there! I'm Rohit's AI assistant. How can I help you today? You can ask me about:
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Rohit's skills and expertise</li>
+                        <li>His projects and GitHub repositories</li>
+                        <li>Professional background and experience</li>
+                        <li>How to contact him (phone: +91 8427525593)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Ask me about Rohit...">
+                <button id="chatbotSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Initialize Three.js 3D Background
+        function initThreeJS() {
+            const container = document.getElementById('threejs-bg');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            container.appendChild(renderer.domElement);
+            
+            // Create floating geometry
+            const geometry = new THREE.IcosahedronGeometry(1, 0);
+            const material = new THREE.MeshPhongMaterial({ 
+                color: 0x00ff88,
+                emissive: 0x00aaff,
+                specular: 0xffffff,
+                shininess: 50,
+                transparent: true,
+                opacity: 0.2,
+                wireframe: true
+            });
+            
+            const particles = [];
+            for (let i = 0; i < 15; i++) {
+                const mesh = new THREE.Mesh(geometry, material);
+                mesh.position.x = (Math.random() - 0.5) * 20;
+                mesh.position.y = (Math.random() - 0.5) * 20;
+                mesh.position.z = (Math.random() - 0.5) * 20;
+                mesh.scale.setScalar(Math.random() * 2 + 0.5);
+                scene.add(mesh);
+                particles.push(mesh);
+            }
+            
+            // Add ambient light
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+            
+            // Add directional light
+            const directionalLight = new THREE.DirectionalLight(0x00ff88, 0.5);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+            
+            camera.position.z = 5;
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                particles.forEach(particle => {
+                    particle.rotation.x += 0.005;
+                    particle.rotation.y += 0.01;
+                    particle.position.z += 0.01;
+                    if (particle.position.z > 10) particle.position.z = -10;
+                });
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+        
+        // Initialize Swiper for projects slider
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            loop: true,
+            slidesPerView: 1,
+            spaceBetween: 30,
+            centeredSlides: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            
+            // Responsive breakpoints
+            breakpoints: {
+                768: {
+                    slidesPerView: 2
+                },
+                1200: {
+                    slidesPerView: 3
+                }
+            },
+            
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            
+            // Pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animate skill bars on scroll
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        };
+        
+        // Check if skills section is in view
+        const skillsSection = document.getElementById('skills');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+        
+        // Update copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const chatbotClose = document.getElementById('chatbotClose');
+        const chatbotMessages = document.getElementById('chatbotMessages');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+        
+        // Toggle chatbot window
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Close chatbot window
+        chatbotClose.addEventListener('click', () => {
+            chatbotWindow.style.display = 'none';
+        });
+        
+        // Enhanced Chatbot knowledge base with phone number
+        const knowledgeBase = {
+            "skills": "Rohit specializes in:\n- Data Analysis (Python, Pandas, SQL, Excel, Power BI, Tableau)\n- Machine Learning (Scikit-learn, TensorFlow, Predictive Modeling)\n- Software Development (Python, JavaScript, React, Node.js, Django)\n- Database Management (SQL, PostgreSQL, MongoDB)\n\nHe has strong expertise in data visualization and extracting insights from complex datasets.",
+            "experience": "Rohit has professional experience as both a Data Analyst and Software Engineer. He holds a Bachelor's degree in Computer Science. His work involves transforming raw data into actionable insights and developing efficient software solutions. For specific details, you can check his resume or LinkedIn profile.",
+            "projects": "Rohit has worked on several notable projects including:\n\n1. Netflix Movie Data Analysis - Comprehensive analysis of Netflix content\n2. Pizza Sales Data Analysis - Sales performance analysis\n3. Customer Churn Prediction - ML model with 92% accuracy\n\nAll projects are available on his GitHub: github.com/krissi0619",
+            "netflix project": "The Netflix Movie Data Analysis project involves examining Netflix's content library to identify trends in genres, ratings, release patterns, and more. It uses Python with Pandas for data manipulation and Matplotlib/Seaborn for visualization.\n\nView the project: github.com/krissi0619/netflixmoviedataanalyst",
+            "pizza project": "The Pizza Sales Data Analysis project focuses on analyzing sales data to identify business insights. It uses SQL for data querying and Power BI for visualization.\n\nView the project: github.com/krissi0619/pizzasalesdataanalysis",
+            "contact": "You can contact Rohit through:\n\n- Phone: +91 8427525593\n- Email: rohityadav00619@gmail.com\n- LinkedIn: linkedin.com/in/rohit-yadav-986402362/\n- GitHub: github.com/krissi0619\n\nHe's available for calls between 10AM to 7PM IST.",
+            "phone": "Rohit's contact number is +91 8427525593. Feel free to call or WhatsApp him during business hours (10AM-7PM IST).",
+            "call": "You can call Rohit at +91 8427525593. He's available between 10AM to 7PM IST.",
+            "whatsapp": "You can WhatsApp Rohit at +91 8427525593. He typically responds within a few hours during the day.",
+            "resume": "You can download Rohit's resume by clicking the 'Download Resume' button in the contact section of his portfolio. It contains detailed information about his education, work experience, and skills.",
+            "github": "Rohit's GitHub profile is github.com/krissi0619 where you can find:\n- All his projects with source code\n- Data analysis implementations\n- Machine learning models\n- Software development projects",
+            "linkedin": "Connect with Rohit on LinkedIn:\nlinkedin.com/in/rohit-yadav-986402362/\n\nHis profile contains professional details, experience, and endorsements.",
+            "education": "Rohit holds a Bachelor's degree in Computer Science. His education has provided him with strong foundations in:\n- Data structures and algorithms\n- Database systems\n- Software engineering\n- Machine learning concepts",
+            "default": "I'm not sure I understand. Here are some things you can ask me about Rohit:\n- What are Rohit's technical skills?\n- Tell me about his projects\n- How can I contact him? (phone: +91 8427525593)\n- What's his professional background?\n- Where can I see his GitHub projects?"
+        };
+        
+        // Add message to chat
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+            
+            // Replace newlines with <br> for HTML display
+            const formattedMessage = message.replace(/\n/g, '<br>');
+            messageDiv.innerHTML = formattedMessage;
+            
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+        
+        // Process user input
+        function processInput() {
+            const input = chatbotInput.value.trim().toLowerCase();
+            if (!input) return;
+            
+            addMessage(input, true);
+            chatbotInput.value = '';
+            
+            // Find the best matching response
+            let response = knowledgeBase.default;
+            const inputWords = input.split(' ');
+            
+            // Check for specific project mentions
+            if (input.includes('netflix') || input.includes('movie data')) {
+                response = knowledgeBase["netflix project"];
+            } else if (input.includes('pizza') || input.includes('sales data')) {
+                response = knowledgeBase["pizza project"];
+            } else if (input.includes('phone') || input.includes('number') || input.includes('call') || input.includes('whatsapp')) {
+                response = knowledgeBase["phone"];
+            } else {
+                // Check other topics
+                for (const [key, value] of Object.entries(knowledgeBase)) {
+                    if (input.includes(key) || inputWords.some(word => key.includes(word))) {
+                        response = value;
+                        break;
+                    }
+                }
+            }
+            
+            // Simulate typing delay
+            setTimeout(() => {
+                addMessage(response);
+            }, 500);
+        }
+        
+        // Send message on button click
+        chatbotSend.addEventListener('click', processInput);
+        
+        // Send message on Enter key
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                processInput();
+            }
+        });
+        
+        // Initialize Three.js background
+        initThreeJS();
+    </script>
+</body>
+</html>

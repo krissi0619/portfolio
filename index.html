@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <style>
-        /* ===== EDITABLE VARIABLES ===== */
+        /* ===== NEW BLACK & RED THEME ===== */
         :root {
-            --primary: #00ff88;              /* Main accent color */
-            --primary-dark: #00cc6a;         /* Darker accent for hover states */
-            --dark: #121212;                 /* Dark background */
-            --darker: #0d0d0d;               /* Even darker for cards */
+            --primary: #ff003c;              /* Vibrant red accent */
+            --primary-dark: #cc002f;         /* Darker red for hover */
+            --dark: #0a0a0a;                 /* Deep black background */
+            --darker: #050505;               /* Even darker for cards */
             --light: #f0f0f0;                /* Light text */
             --gray: #aaaaaa;                 /* Secondary text */
             --font-main: 'Poppins', sans-serif;
@@ -58,16 +58,17 @@
         .floating-shapes div {
             position: absolute;
             border-radius: 50%;
-            background: rgba(0, 255, 136, 0.05);
-            filter: blur(30px);
+            background: rgba(255, 0, 60, 0.05);
+            filter: blur(50px);
             animation: float-shapes 25s linear infinite;
         }
         
         .floating-shapes div:nth-child(1) {
-            width: 500px;
-            height: 500px;
+            width: 600px;
+            height: 600px;
             top: 10%;
             left: 10%;
+            background: radial-gradient(circle, rgba(255, 0, 60, 0.1), transparent 70%);
         }
         
         .floating-shapes div:nth-child(2) {
@@ -77,6 +78,7 @@
             left: 70%;
             animation-delay: 5s;
             animation-duration: 30s;
+            background: radial-gradient(circle, rgba(255, 0, 60, 0.08), transparent 70%);
         }
         
         .floating-shapes div:nth-child(3) {
@@ -86,6 +88,7 @@
             left: 50%;
             animation-delay: 10s;
             animation-duration: 20s;
+            background: radial-gradient(circle, rgba(255, 0, 60, 0.06), transparent 70%);
         }
         
         @keyframes float-shapes {
@@ -106,6 +109,26 @@
             }
         }
         
+        /* Tech Symbols Background */
+        .tech-symbols-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23ff003c'%3E%3Cpath d='M50 20L20 50l30 30 30-30z'/%3E%3C/svg%3E"), /* AI */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23ff003c'%3E%3Cpath d='M20 20h60v60H20z'/%3E%3C/svg%3E"), /* ML */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23ff003c'%3E%3Cpath d='M20 20l60 60-20 20-60-60z'/%3E%3C/svg%3E"), /* CSS */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23ff003c'%3E%3Cpath d='M50 20l30 30-30 30-30-30z'/%3E%3C/svg%3E"), /* HTML */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23ff003c'%3E%3Cpath d='M20 50a30 30 0 1160 0 30 30 0 01-60 0z'/%3E%3C/svg%3E"); /* Data */
+            background-size: 100px 100px;
+            background-repeat: repeat;
+        }
+        
         /* Grid overlay */
         body::after {
             content: '';
@@ -115,8 +138,8 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(255, 0, 60, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 60, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
             z-index: -1;
             pointer-events: none;
@@ -142,6 +165,10 @@
             display: inline-block;
             font-family: var(--font-secondary);
             font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), #ff6600);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .section-title::after {
@@ -171,6 +198,7 @@
             color: var(--primary);
             font-family: var(--font-secondary);
             letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
         }
         
         nav ul {
@@ -224,7 +252,7 @@
         .hero h1 {
             font-size: 4rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, var(--primary), #00aaff);
+            background: linear-gradient(90deg, var(--primary), #ff6600);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -261,12 +289,12 @@
             border: none;
             cursor: pointer;
             font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 4px 15px rgba(255, 0, 60, 0.3);
         }
         
         .btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.4);
+            box-shadow: 0 10px 25px rgba(255, 0, 60, 0.4);
             background-color: var(--primary-dark);
         }
         
@@ -333,12 +361,33 @@
             border-radius: 15px;
             transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
         
         .skill:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 255, 136, 0.3);
-            box-shadow: 0 20px 30px rgba(0, 255, 136, 0.1);
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            border-color: rgba(255, 0, 60, 0.3);
+            box-shadow: 0 20px 30px rgba(255, 0, 60, 0.1);
+        }
+        
+        .skill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 0, 60, 0.1), transparent 70%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .skill:hover::before {
+            opacity: 1;
         }
         
         .skill h3 {
@@ -348,20 +397,27 @@
             font-family: var(--font-secondary);
         }
         
+        .skill h3 i {
+            margin-right: 10px;
+        }
+        
         .skill-bar {
             height: 12px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 6px;
             margin-bottom: 1.5rem;
             overflow: hidden;
+            position: relative;
+            transform: translateZ(20px);
         }
         
         .skill-progress {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), #00aaff);
+            background: linear-gradient(90deg, var(--primary), #ff6600);
             border-radius: 6px;
             position: relative;
             transition: width 1s ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
         }
         
         .skill-progress::after {
@@ -377,6 +433,44 @@
         .skill p {
             color: var(--gray);
             font-size: 1rem;
+            transform: translateZ(30px);
+            line-height: 1.8;
+        }
+        
+        .skill p i {
+            width: 20px;
+            text-align: center;
+            margin-right: 8px;
+            color: var(--primary);
+        }
+        
+        /* Floating effect for skills */
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotateX(0) rotateY(0);
+            }
+            50% {
+                transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
+            }
+            100% {
+                transform: translateY(0px) rotateX(0) rotateY(0);
+            }
+        }
+        
+        .skill:nth-child(1) {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .skill:nth-child(2) {
+            animation: float 5s ease-in-out infinite 0.5s;
+        }
+        
+        .skill:nth-child(3) {
+            animation: float 6s ease-in-out infinite 1s;
+        }
+        
+        .skill:nth-child(4) {
+            animation: float 5.5s ease-in-out infinite 1.5s;
         }
         
         /* ===== PROJECTS SECTION ===== */
@@ -415,8 +509,8 @@
             height: 200%;
             background: linear-gradient(
                 to bottom right,
-                rgba(0, 255, 136, 0.1),
-                rgba(0, 255, 136, 0)
+                rgba(255, 0, 60, 0.1),
+                rgba(255, 0, 60, 0)
             );
             transform: rotate(30deg);
             z-index: 0;
@@ -424,8 +518,8 @@
         
         .project-slide:hover {
             transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 255, 136, 0.3);
-            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 30px 60px rgba(255, 0, 60, 0.3);
+            border-color: rgba(255, 0, 60, 0.3);
         }
         
         .project-content {
@@ -472,18 +566,18 @@
         }
         
         .project-tag {
-            background-color: rgba(0, 255, 136, 0.1);
+            background-color: rgba(255, 0, 60, 0.1);
             color: var(--primary);
             padding: 0.5rem 1rem;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 500;
-            border: 1px solid rgba(0, 255, 136, 0.2);
+            border: 1px solid rgba(255, 0, 60, 0.2);
             transition: all 0.3s;
         }
         
         .project-tag:hover {
-            background-color: rgba(0, 255, 136, 0.2);
+            background-color: rgba(255, 0, 60, 0.2);
             transform: translateY(-2px);
         }
         
@@ -509,8 +603,8 @@
         
         .project-links a:hover {
             color: var(--primary);
-            background: rgba(0, 255, 136, 0.1);
-            border-color: rgba(0, 255, 136, 0.3);
+            background: rgba(255, 0, 60, 0.1);
+            border-color: rgba(255, 0, 60, 0.3);
             transform: translateY(-3px);
         }
         
@@ -531,7 +625,7 @@
         .swiper-button-next,
         .swiper-button-prev {
             color: var(--primary);
-            background-color: rgba(0, 255, 136, 0.1);
+            background-color: rgba(255, 0, 60, 0.1);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -541,7 +635,7 @@
         
         .swiper-button-next:hover,
         .swiper-button-prev:hover {
-            background-color: rgba(0, 255, 136, 0.2);
+            background-color: rgba(255, 0, 60, 0.2);
             transform: scale(1.1);
         }
         
@@ -578,7 +672,7 @@
         .contact-item:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(0, 255, 136, 0.3);
+            border-color: rgba(255, 0, 60, 0.3);
         }
         
         .contact-item i {
@@ -622,8 +716,8 @@
         
         .contact-form:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
-            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 20px 40px rgba(255, 0, 60, 0.1);
+            border-color: rgba(255, 0, 60, 0.3);
         }
         
         .form-group {
@@ -652,12 +746,23 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 0 3px rgba(255, 0, 60, 0.1);
         }
         
         .form-group textarea {
             min-height: 150px;
             resize: vertical;
+        }
+        
+        /* Form Success Message */
+        .form-success {
+            display: none;
+            background: rgba(255, 0, 60, 0.1);
+            border: 1px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
         }
         
         /* ===== CHATBOT STYLES ===== */
@@ -679,7 +784,7 @@
             justify-content: center;
             font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 5px 20px rgba(255, 0, 60, 0.3);
             transition: all 0.3s;
         }
         
@@ -800,7 +905,7 @@
         
         .chatbot-input input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 0 3px rgba(255, 0, 60, 0.1);
         }
         
         .chatbot-input button {
@@ -909,8 +1014,279 @@
         
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.2);
-            border-color: rgba(0, 255, 136, 0.3);
+            box-shadow: 0 15px 40px rgba(255, 0, 60, 0.2);
+            border-color: rgba(255, 0, 60, 0.3);
+        }
+        
+        /* ===== ATS RESUME CHECKER STYLES ===== */
+        .ats-checker {
+            background-color: var(--darker);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .ats-checker:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 0, 60, 0.1);
+            border-color: rgba(255, 0, 60, 0.3);
+        }
+        
+        .ats-checker h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-family: var(--font-secondary);
+            position: relative;
+        }
+        
+        .ats-checker h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            border-radius: 3px;
+        }
+        
+        .ats-checker p {
+            margin-bottom: 2rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        .ats-upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ats-upload-area:hover {
+            border-color: var(--primary);
+        }
+        
+        .ats-upload-area.active {
+            border-color: var(--primary);
+            background-color: rgba(255, 0, 60, 0.05);
+        }
+        
+        .ats-upload-area i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .ats-upload-area h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+        
+        .ats-upload-area p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .ats-file-input {
+            display: none;
+        }
+        
+        .ats-upload-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .ats-upload-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .ats-file-name {
+            margin-top: 1rem;
+            color: var(--primary);
+            font-weight: 500;
+            display: none;
+        }
+        
+        .ats-analyze-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .ats-analyze-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .ats-analyze-btn:disabled {
+            background-color: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .ats-results {
+            display: none;
+            margin-top: 3rem;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .ats-score {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .ats-score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary) 0%, var(--darker) 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(255, 0, 60, 0.2);
+        }
+        
+        .ats-score-circle::before {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background-color: var(--darker);
+            border-radius: 50%;
+        }
+        
+        .ats-score-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+            font-family: var(--font-secondary);
+        }
+        
+        .ats-score-text {
+            font-size: 1.2rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+        }
+        
+        .ats-feedback h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-secondary);
+        }
+        
+        .ats-feedback-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .ats-feedback-item h4 {
+            font-size: 1.1rem;
+            color: var(--light);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ats-feedback-item h4 i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .ats-feedback-item p {
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+        
+        .ats-keywords {
+            margin-top: 3rem;
+        }
+        
+        .ats-keywords h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-secondary);
+        }
+        
+        .ats-keywords-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        
+        .ats-keyword {
+            background-color: rgba(255, 0, 60, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 0, 60, 0.2);
+        }
+        
+        .ats-keyword.missing {
+            opacity: 0.5;
+            text-decoration: line-through;
+        }
+        
+        /* Responsive adjustments for ATS checker */
+        @media (max-width: 768px) {
+            .ats-checker {
+                padding: 2rem;
+            }
+            
+            .ats-upload-area {
+                padding: 2rem 1rem;
+            }
+            
+            .ats-score-circle {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .ats-score-circle::before {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .ats-score-value {
+                font-size: 2.5rem;
+            }
         }
         
         /* ===== RESPONSIVE DESIGN ===== */
@@ -1044,6 +1420,9 @@
         <div></div>
     </div>
     
+    <!-- Tech Symbols Background -->
+    <div class="tech-symbols-bg"></div>
+    
     <div class="container">
         <!-- ===== HEADER ===== -->
         <header>
@@ -1053,6 +1432,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#ats-checker">Resume Checker</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -1106,7 +1486,15 @@
                             <li style="margin-bottom: 0.8rem;">
                                 <strong>Bachelor's in Information Technology</strong> -  Panjab University Swami Sarvanand Giri Regional Centre (2022-2026)
                             </li>
+                            <li style="margin-bottom: 0.8rem;">
+                                <strong>12th Grade</strong> - Govt Model Senior Secondary School, Sector 22A, Chandigarh
+                            </li>
                         </ul>
+                    </div>
+                    
+                    <div style="margin-top: 2rem;">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem; font-family: var(--font-secondary);">Hobbies & Interests</h3>
+                        <p>Outside of work, I enjoy playing cricket, writing, and video editing. I'm originally from Panchkula, Haryana.</p>
                     </div>
                 </div>
             </div>
@@ -1117,35 +1505,65 @@
             <h2 class="section-title">My Skills</h2>
             <div class="skills-container">
                 <div class="skill card">
-                    <h3>Data Analysis</h3>
+                    <h3><i class="fas fa-chart-line"></i> Data Analysis</h3>
                     <div class="skill-bar">
                         <div class="skill-progress" data-progress="95%" style="width: 95%;"></div>
                     </div>
-                    <p>Python (Pandas, NumPy), SQL, Excel, Power BI, Tableau, Data Visualization</p>
+                    <p>
+                        <i class="fab fa-python"></i> Python (Pandas, NumPy)<br>
+                        <i class="fas fa-database"></i> SQL<br>
+                        <i class="fas fa-file-excel"></i> Excel<br>
+                        <i class="fas fa-chart-pie"></i> Power BI<br>
+                        <i class="fas fa-chart-bar"></i> Tableau<br>
+                        <i class="fas fa-project-diagram"></i> Data Visualization
+                    </p>
                 </div>
                 
                 <div class="skill card">
-                    <h3>Machine Learning</h3>
+                    <h3><i class="fas fa-robot"></i> Machine Learning</h3>
                     <div class="skill-bar">
                         <div class="skill-progress" data-progress="85%" style="width: 85%;"></div>
                     </div>
-                    <p>Scikit-learn, TensorFlow, Predictive Modeling, Natural Language Processing</p>
+                    <p>
+                        <i class="fas fa-brain"></i> Scikit-learn<br>
+                        <i class="fas fa-network-wired"></i> TensorFlow<br>
+                        <i class="fas fa-chart-line"></i> Predictive Modeling<br>
+                        <i class="fas fa-language"></i> Natural Language Processing<br>
+                        <i class="fas fa-project-diagram"></i> Neural Networks<br>
+                        <i class="fas fa-chart-area"></i> Data Mining
+                    </p>
                 </div>
                 
                 <div class="skill card">
-                    <h3>Software Development</h3>
+                    <h3><i class="fas fa-code"></i> Software Development</h3>
                     <div class="skill-bar">
                         <div class="skill-progress" data-progress="90%" style="width: 90%;"></div>
                     </div>
-                    <p>Tailwind, Python, JavaScript, React, Node.js, Django, REST APIs, Git</p>
+                    <p>
+                        <i class="fab fa-html5"></i> HTML5<br>
+                        <i class="fab fa-css3-alt"></i> CSS3<br>
+                        <i class="fab fa-js"></i> JavaScript<br>
+                        <i class="fab fa-react"></i> React<br>
+                        <i class="fab fa-node-js"></i> Node.js<br>
+                        <i class="fab fa-python"></i> Django<br>
+                        <i class="fas fa-server"></i> REST APIs<br>
+                        <i class="fab fa-git-alt"></i> Git
+                    </p>
                 </div>
                 
                 <div class="skill card">
-                    <h3>Database Management</h3>
+                    <h3><i class="fas fa-database"></i> Database Management</h3>
                     <div class="skill-bar">
                         <div class="skill-progress" data-progress="88%" style="width: 88%;"></div>
                     </div>
-                    <p>SQL, PostgreSQL, MongoDB</p>
+                    <p>
+                        <i class="fas fa-database"></i> SQL<br>
+                        <i class="fas fa-server"></i> PostgreSQL<br>
+                        <i class="fas fa-database"></i> MongoDB<br>
+                        <i class="fas fa-table"></i> Database Design<br>
+                        <i class="fas fa-arrows-alt-h"></i> ETL Processes<br>
+                        <i class="fas fa-tasks"></i> Query Optimization
+                    </p>
                 </div>
             </div>
         </section>
@@ -1207,7 +1625,28 @@
                             </div>
                         </div>
                         
-                      
+                        <div class="swiper-slide">
+                            <div class="project-slide card">
+                                <div class="project-content">
+                                    <h3>Personal Portfolio Website</h3>
+                                    <p>Designed and developed a responsive portfolio website to showcase my projects and skills. Built with HTML5, CSS3, JavaScript, and Swiper.js for project carousel functionality.</p>
+                                    <div class="project-tags">
+                                        <span class="project-tag">HTML5</span>
+                                        <span class="project-tag">CSS3</span>
+                                        <span class="project-tag">JavaScript</span>
+                                        <span class="project-tag">Responsive Design</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="https://github.com/krissi0619/portfolio" target="_blank">
+                                            <i class="fab fa-github"></i> View on GitHub
+                                        </a>
+                                        <a href="#" class="demo-link">
+                                            <i class="fas fa-external-link-alt"></i> Live Demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- Navigation buttons -->
@@ -1216,6 +1655,65 @@
                     
                     <!-- Pagination -->
                     <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ===== ATS RESUME CHECKER SECTION ===== -->
+        <section id="ats-checker" class="ats-checker card">
+            <h2 class="section-title">ATS Resume Checker</h2>
+            <p>Get an instant analysis of how well your resume performs with Applicant Tracking Systems (ATS). Upload your resume to receive a compatibility score and actionable feedback to improve your chances of getting noticed by recruiters.</p>
+            
+            <div class="ats-upload-area" id="atsUploadArea">
+                <i class="fas fa-file-upload"></i>
+                <h3>Upload Your Resume</h3>
+                <p>Supported formats: PDF, DOCX, DOC (Max size: 5MB)</p>
+                <label for="atsFileInput" class="ats-upload-btn">Choose File</label>
+                <input type="file" id="atsFileInput" class="ats-file-input" accept=".pdf,.doc,.docx">
+                <div class="ats-file-name" id="atsFileName"></div>
+            </div>
+            
+            <button class="ats-analyze-btn" id="atsAnalyzeBtn" disabled>Analyze Resume</button>
+            
+            <div class="ats-results" id="atsResults">
+                <div class="ats-score">
+                    <div class="ats-score-circle" id="atsScoreCircle">
+                        <div class="ats-score-value" id="atsScoreValue">0%</div>
+                    </div>
+                    <h3 class="ats-score-text">ATS Compatibility Score</h3>
+                    <p id="atsScoreDescription">Your resume needs significant improvements to pass through most ATS filters.</p>
+                </div>
+                
+                <div class="ats-feedback">
+                    <h3><i class="fas fa-clipboard-check"></i> Feedback & Recommendations</h3>
+                    
+                    <div class="ats-feedback-item">
+                        <h4><i class="fas fa-check-circle"></i> Resume Length</h4>
+                        <p id="atsFeedbackLength">Your resume is the optimal length (1-2 pages). This is good for ATS systems.</p>
+                    </div>
+                    
+                    <div class="ats-feedback-item">
+                        <h4><i class="fas fa-font"></i> Readability</h4>
+                        <p id="atsFeedbackReadability">Your resume uses standard fonts and formatting which is ATS-friendly.</p>
+                    </div>
+                    
+                    <div class="ats-feedback-item">
+                        <h4><i class="fas fa-key"></i> Keywords</h4>
+                        <p id="atsFeedbackKeywords">Your resume could include more relevant keywords from the job description.</p>
+                    </div>
+                    
+                    <div class="ats-feedback-item">
+                        <h4><i class="fas fa-sitemap"></i> Structure</h4>
+                        <p id="atsFeedbackStructure">Your resume has a clear structure with appropriate section headings.</p>
+                    </div>
+                </div>
+                
+                <div class="ats-keywords">
+                    <h3><i class="fas fa-tags"></i> Suggested Keywords</h3>
+                    <p>These are common keywords for your industry that could improve your ATS score:</p>
+                    <div class="ats-keywords-list" id="atsKeywordsList">
+                        <!-- Keywords will be added dynamically -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -1229,7 +1727,7 @@
                         <i class="fab fa-linkedin-in"></i>
                         <div class="contact-item-content">
                             <h3>LinkedIn</h3>
-                            <a href="https://www.linkedin.com/in/rohit-yadav-986402362/" target="_blank">linkedin.com/in/rohit-yadav-986402362/</a>
+                            <a href="https://www.linkedin.com/in/rohityadav00619/" target="_blank">linkedin.com/in/rohityadav00619</a>
                         </div>
                     </div>
                     
@@ -1268,10 +1766,11 @@
                     </div>
                 </div>
                 
-               <!-- Contact Form -->
-<div class="contact-form card">
+                <!-- Contact Form -->
+           <div class="contact-form card">
     <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-family: var(--font-secondary);">Send Me a Message</h3>
-    <form action="https://formspree.io/f/mqalerlr" method="POST">
+    
+    <form id="contactForm" action="https://formspree.io/f/mqalerlr" method="POST">
         <div class="form-group">
             <label for="name">Your Name</label>
             <input type="text" id="name" name="name" required>
@@ -1292,9 +1791,12 @@
             <i class="fas fa-paper-plane"></i> Send Message
         </button>
     </form>
+    
+    <div class="form-success" id="formSuccess" style="display: none; margin-top: 1rem; color: green; font-weight: bold;">
+        <i class="fas fa-check-circle"></i> Thank you for your message! I'll get back to you soon.
+    </div>
 </div>
 
-            </div>
         </section>
         
         <!-- ===== FOOTER ===== -->
@@ -1304,10 +1806,11 @@
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
+                <a href="#ats-checker">Resume Checker</a>
                 <a href="#contact">Contact</a>
             </div>
             <div class="footer-social">
-                <a href="https://www.linkedin.com/in/rohit-yadav-986402362/" target="_blank">
+                <a href="hhttps://www.linkedin.com/in/rohityadav00619/" target="_blank">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
                 <a href="https://github.com/krissi0619" target="_blank">
@@ -1340,6 +1843,7 @@
                         <li>Rohit's skills and expertise</li>
                         <li>His projects and GitHub repositories</li>
                         <li>Professional background and experience</li>
+                        <li>Education and hobbies</li>
                         <li>How to contact him (phone: +91 8427525593)</li>
                     </ul>
                 </div>
@@ -1367,11 +1871,11 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             container.appendChild(renderer.domElement);
             
-            // Create floating geometry
+            // Create floating geometry with red theme
             const geometry = new THREE.IcosahedronGeometry(1, 0);
             const material = new THREE.MeshPhongMaterial({ 
-                color: 0x00ff88,
-                emissive: 0x00aaff,
+                color: 0xff003c,
+                emissive: 0xcc002f,
                 specular: 0xffffff,
                 shininess: 50,
                 transparent: true,
@@ -1395,9 +1899,18 @@
             scene.add(ambientLight);
             
             // Add directional light
-            const directionalLight = new THREE.DirectionalLight(0x00ff88, 0.5);
+            const directionalLight = new THREE.DirectionalLight(0xff6600, 0.5);
             directionalLight.position.set(1, 1, 1);
             scene.add(directionalLight);
+            
+            // Add red point lights
+            const redLight1 = new THREE.PointLight(0xff003c, 1, 50);
+            redLight1.position.set(5, 5, 5);
+            scene.add(redLight1);
+            
+            const redLight2 = new THREE.PointLight(0xff003c, 1, 50);
+            redLight2.position.set(-5, -5, -5);
+            scene.add(redLight2);
             
             camera.position.z = 5;
             
@@ -1411,6 +1924,16 @@
                     particle.position.z += 0.01;
                     if (particle.position.z > 10) particle.position.z = -10;
                 });
+                
+                // Rotate lights for dynamic effect
+                const time = Date.now() * 0.001;
+                redLight1.position.x = Math.sin(time * 0.7) * 10;
+                redLight1.position.y = Math.cos(time * 0.5) * 10;
+                redLight1.position.z = Math.cos(time * 0.3) * 10;
+                
+                redLight2.position.x = Math.cos(time * 0.3) * 10;
+                redLight2.position.y = Math.sin(time * 0.5) * 10;
+                redLight2.position.z = Math.sin(time * 0.7) * 10;
                 
                 renderer.render(scene, camera);
             }
@@ -1427,7 +1950,6 @@
         
         // Initialize Swiper for projects slider
         const swiper = new Swiper('.swiper', {
-            // Optional parameters
             loop: true,
             slidesPerView: 1,
             spaceBetween: 30,
@@ -1437,7 +1959,6 @@
                 disableOnInteraction: false,
             },
             
-            // Responsive breakpoints
             breakpoints: {
                 768: {
                     slidesPerView: 2
@@ -1447,13 +1968,11 @@
                 }
             },
             
-            // Navigation arrows
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
             
-            // Pagination
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -1518,13 +2037,14 @@
             chatbotWindow.style.display = 'none';
         });
         
-        // Enhanced Chatbot knowledge base with phone number
+        // Enhanced Chatbot knowledge base with personal details
         const knowledgeBase = {
             "skills": "Rohit specializes in:\n- Data Analysis (Python, Pandas, SQL, Excel, Power BI, Tableau)\n- Machine Learning (Scikit-learn, TensorFlow, Predictive Modeling)\n- Software Development (Python, JavaScript, React, Node.js, Django)\n- Database Management (SQL, PostgreSQL, MongoDB)\n\nHe has strong expertise in data visualization and extracting insights from complex datasets.",
             "experience": "Rohit has professional experience as both a Data Analyst and Software Engineer. He holds a Bachelor's degree in Computer Science. His work involves transforming raw data into actionable insights and developing efficient software solutions. For specific details, you can check his resume or LinkedIn profile.",
-            "projects": "Rohit has worked on several notable projects including:\n\n1. Netflix Movie Data Analysis - Comprehensive analysis of Netflix content\n2. Pizza Sales Data Analysis - Sales performance analysis\n3. Customer Churn Prediction - ML model with 92% accuracy\n\nAll projects are available on his GitHub: github.com/krissi0619",
+            "projects": "Rohit has worked on several notable projects including:\n\n1. Netflix Movie Data Analysis - Comprehensive analysis of Netflix content\n2. Pizza Sales Data Analysis - Sales performance analysis\n3. Personal Portfolio Website\n\nAll projects are available on his GitHub: github.com/krissi0619",
             "netflix project": "The Netflix Movie Data Analysis project involves examining Netflix's content library to identify trends in genres, ratings, release patterns, and more. It uses Python with Pandas for data manipulation and Matplotlib/Seaborn for visualization.\n\nView the project: github.com/krissi0619/netflixmoviedataanalyst",
             "pizza project": "The Pizza Sales Data Analysis project focuses on analyzing sales data to identify business insights. It uses SQL for data querying and Power BI for visualization.\n\nView the project: github.com/krissi0619/pizzasalesdataanalysis",
+            "portfolio": "Rohit's personal portfolio website showcases his projects and skills. Built with HTML5, CSS3, and JavaScript.\n\nView the project: github.com/krissi0619/portfolio",
             "contact": "You can contact Rohit through:\n\n- Phone: +91 8427525593\n- Email: rohityadav00619@gmail.com\n- LinkedIn: linkedin.com/in/rohit-yadav-986402362/\n- GitHub: github.com/krissi0619\n\nHe's available for calls between 10AM to 7PM IST.",
             "phone": "Rohit's contact number is +91 8427525593. Feel free to call or WhatsApp him during business hours (10AM-7PM IST).",
             "call": "You can call Rohit at +91 8427525593. He's available between 10AM to 7PM IST.",
@@ -1532,8 +2052,14 @@
             "resume": "You can download Rohit's resume by clicking the 'Download Resume' button in the contact section of his portfolio. It contains detailed information about his education, work experience, and skills.",
             "github": "Rohit's GitHub profile is github.com/krissi0619 where you can find:\n- All his projects with source code\n- Data analysis implementations\n- Machine learning models\n- Software development projects",
             "linkedin": "Connect with Rohit on LinkedIn:\nlinkedin.com/in/rohit-yadav-986402362/\n\nHis profile contains professional details, experience, and endorsements.",
-            "education": "Rohit holds a Bachelor's degree in Computer Science. His education has provided him with strong foundations in:\n- Data structures and algorithms\n- Database systems\n- Software engineering\n- Machine learning concepts",
-            "default": "I'm not sure I understand. Here are some things you can ask me about Rohit:\n- What are Rohit's technical skills?\n- Tell me about his projects\n- How can I contact him? (phone: +91 8427525593)\n- What's his professional background?\n- Where can I see his GitHub projects?"
+            "education": "Rohit completed his 12th grade from Govt Model Senior Secondary School, Sector 22A, Chandigarh. He is currently pursuing a Bachelor's degree in Information Technology from Panjab University Swami Sarvanand Giri Regional Centre (2022-2026).",
+            "hobbies": "Rohit enjoys playing cricket, writing, and video editing in his free time. These activities help him stay creative and active.",
+            "hometown": "Rohit is from Panchkula, Haryana, India.",
+            "school": "Rohit completed his 12th grade from Govt Model Senior Secondary School, Sector 22A, Chandigarh.",
+            "cricket": "Cricket is one of Rohit's favorite hobbies. He enjoys both watching and playing the game.",
+            "writing": "Rohit enjoys writing as a creative outlet in his free time.",
+            "editing": "Video editing is one of Rohit's hobbies. He enjoys creating and editing video content.",
+            "default": "I'm not sure I understand. Here are some things you can ask me about Rohit:\n- What are Rohit's technical skills?\n- Tell me about his projects\n- How can I contact him? (phone: +91 8427525593)\n- What's his education background?\n- What are his hobbies?\n- Where is he from?"
         };
         
         // Add message to chat
@@ -1567,8 +2093,16 @@
                 response = knowledgeBase["netflix project"];
             } else if (input.includes('pizza') || input.includes('sales data')) {
                 response = knowledgeBase["pizza project"];
+            } else if (input.includes('portfolio') || input.includes('website')) {
+                response = knowledgeBase["portfolio"];
             } else if (input.includes('phone') || input.includes('number') || input.includes('call') || input.includes('whatsapp')) {
                 response = knowledgeBase["phone"];
+            } else if (input.includes('education') || input.includes('school') || input.includes('12th') || input.includes('college')) {
+                response = knowledgeBase["education"];
+            } else if (input.includes('hobby') || input.includes('hobbies') || input.includes('interest') || input.includes('cricket') || input.includes('writing') || input.includes('editing')) {
+                response = knowledgeBase["hobbies"];
+            } else if (input.includes('hometown') || input.includes('from') || input.includes('panchkula')) {
+                response = knowledgeBase["hometown"];
             } else {
                 // Check other topics
                 for (const [key, value] of Object.entries(knowledgeBase)) {
@@ -1597,6 +2131,208 @@
         
         // Initialize Three.js background
         initThreeJS();
+        
+        // Contact form submission with email functionality
+         const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(contactForm);
+
+        fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+            if (response.ok) {
+                formSuccess.style.display = 'block';
+                contactForm.reset();
+                setTimeout(() => {
+                    formSuccess.style.display = 'none';
+                }, 5000);
+            } else {
+                alert('Error submitting form. Please try again.');
+            }
+        })
+        .catch(error => {
+            alert('Error submitting form. Please try again.');
+        });
+    });
+        
+        // ===== ATS RESUME CHECKER FUNCTIONALITY =====
+        const atsFileInput = document.getElementById('atsFileInput');
+        const atsUploadArea = document.getElementById('atsUploadArea');
+        const atsFileName = document.getElementById('atsFileName');
+        const atsAnalyzeBtn = document.getElementById('atsAnalyzeBtn');
+        const atsResults = document.getElementById('atsResults');
+        const atsScoreCircle = document.getElementById('atsScoreCircle');
+        const atsScoreValue = document.getElementById('atsScoreValue');
+        const atsScoreDescription = document.getElementById('atsScoreDescription');
+        const atsFeedbackLength = document.getElementById('atsFeedbackLength');
+        const atsFeedbackReadability = document.getElementById('atsFeedbackReadability');
+        const atsFeedbackKeywords = document.getElementById('atsFeedbackKeywords');
+        const atsFeedbackStructure = document.getElementById('atsFeedbackStructure');
+        const atsKeywordsList = document.getElementById('atsKeywordsList');
+        
+        // Keywords for different industries (simplified for demo)
+        const industryKeywords = {
+            "data": ["data analysis", "data visualization", "SQL", "Python", "Pandas", "NumPy", "machine learning", "ETL", "data cleaning", "statistics", "Power BI", "Tableau", "Excel", "data mining", "predictive modeling"],
+            "software": ["JavaScript", "React", "Node.js", "Python", "Django", "REST API", "Git", "HTML", "CSS", "frontend", "backend", "full stack", "database", "MongoDB", "PostgreSQL"],
+            "general": ["teamwork", "communication", "problem solving", "leadership", "project management", "agile", "scrum", "collaboration", "time management", "critical thinking"]
+        };
+        
+        // Handle file selection
+        atsFileInput.addEventListener('change', function(e) {
+            if (this.files && this.files[0]) {
+                const file = this.files[0];
+                const fileSize = file.size / 1024 / 1024; // in MB
+                
+                // Check file size
+                if (fileSize > 5) {
+                    alert('File size exceeds 5MB limit. Please choose a smaller file.');
+                    this.value = '';
+                    return;
+                }
+                
+                // Check file type
+                const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+                if (!validTypes.includes(file.type)) {
+                    alert('Please select a valid file type (PDF, DOC, or DOCX).');
+                    this.value = '';
+                    return;
+                }
+                
+                // Display file name
+                atsFileName.textContent = file.name;
+                atsFileName.style.display = 'block';
+                atsAnalyzeBtn.disabled = false;
+                atsUploadArea.classList.add('active');
+            }
+        });
+        
+        // Drag and drop functionality
+        atsUploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('active');
+        });
+        
+        atsUploadArea.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            if (!atsFileInput.files[0]) {
+                this.classList.remove('active');
+            }
+        });
+        
+        atsUploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('active');
+            
+            if (e.dataTransfer.files.length) {
+                atsFileInput.files = e.dataTransfer.files;
+                const event = new Event('change');
+                atsFileInput.dispatchEvent(event);
+            }
+        });
+        
+        // Analyze resume button click
+        atsAnalyzeBtn.addEventListener('click', function() {
+            if (!atsFileInput.files[0]) return;
+            
+            // Show loading state
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+            this.disabled = true;
+            
+            // Simulate analysis (in a real app, this would be an API call)
+            setTimeout(() => {
+                analyzeResume();
+                this.innerHTML = 'Analyze Resume';
+                this.disabled = false;
+            }, 2000);
+        });
+        
+        // Function to analyze resume (simulated)
+        function analyzeResume() {
+            // Generate random score between 40-95 for demo purposes
+            const score = Math.floor(Math.random() * 56) + 40;
+            
+            // Update score display
+            atsScoreValue.textContent = `${score}%`;
+            atsScoreCircle.style.background = `conic-gradient(var(--primary) ${score}%, var(--darker) ${score}%)`;
+            
+            // Set score description
+            if (score >= 80) {
+                atsScoreDescription.textContent = "Excellent! Your resume is well-optimized for ATS systems.";
+            } else if (score >= 60) {
+                atsScoreDescription.textContent = "Good job! Your resume is decent but could use some improvements.";
+            } else {
+                atsScoreDescription.textContent = "Your resume needs significant improvements to pass through most ATS filters.";
+            }
+            
+            // Generate feedback (simulated)
+            const feedback = {
+                length: Math.random() > 0.3 ? "optimal" : (Math.random() > 0.5 ? "too long" : "too short"),
+                readability: Math.random() > 0.2 ? "good" : "could be improved",
+                keywords: Math.random() > 0.4 ? "adequate" : "needs more",
+                structure: Math.random() > 0.3 ? "clear" : "could be better organized"
+            };
+            
+            // Update feedback sections
+            if (feedback.length === "optimal") {
+                atsFeedbackLength.textContent = "Your resume is the optimal length (1-2 pages). This is good for ATS systems.";
+            } else if (feedback.length === "too long") {
+                atsFeedbackLength.textContent = "Your resume is too long (more than 2 pages). Consider shortening it to improve ATS compatibility.";
+            } else {
+                atsFeedbackLength.textContent = "Your resume is too short (less than 1 page). Consider adding more relevant details to improve your chances.";
+            }
+            
+            if (feedback.readability === "good") {
+                atsFeedbackReadability.textContent = "Your resume uses standard fonts and formatting which is ATS-friendly.";
+            } else {
+                atsFeedbackReadability.textContent = "Your resume may use fonts or formatting that could cause issues with some ATS systems. Stick to standard fonts like Arial or Times New Roman.";
+            }
+            
+            if (feedback.keywords === "adequate") {
+                atsFeedbackKeywords.textContent = "Your resume includes a good number of relevant keywords. Make sure to tailor them to each job application.";
+            } else {
+                atsFeedbackKeywords.textContent = "Your resume could include more relevant keywords from the job description. See suggested keywords below.";
+            }
+            
+            if (feedback.structure === "clear") {
+                atsFeedbackStructure.textContent = "Your resume has a clear structure with appropriate section headings. This helps ATS systems parse your information correctly.";
+            } else {
+                atsFeedbackStructure.textContent = "Your resume structure could be improved. Use clear section headings (e.g., 'Work Experience', 'Education', 'Skills') to help ATS systems categorize your information.";
+            }
+            
+            // Generate suggested keywords based on industry (simulated)
+            const selectedIndustry = Math.random() > 0.5 ? "data" : "software";
+            const keywords = [...industryKeywords[selectedIndustry], ...industryKeywords.general];
+            
+            // Display keywords
+            atsKeywordsList.innerHTML = '';
+            keywords.forEach(keyword => {
+                const keywordElement = document.createElement('div');
+                keywordElement.classList.add('ats-keyword');
+                
+                // Randomly mark some keywords as missing for demo purposes
+                if (Math.random() > 0.6) {
+                    keywordElement.classList.add('missing');
+                }
+                
+                keywordElement.textContent = keyword;
+                atsKeywordsList.appendChild(keywordElement);
+            });
+            
+            // Show results
+            atsResults.style.display = 'block';
+            
+            // Scroll to results
+            setTimeout(() => {
+                atsResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
     </script>
 </body>
 </html>
